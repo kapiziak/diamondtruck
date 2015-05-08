@@ -12593,7 +12593,7 @@ CMD:dodaj_zlecenie(playerid,params[])
 
 	new t,cid,kct;
 	if(sscanf(params,"ddd",t,cid,kct))
-	return 0;
+	return 0; // Kocham Weronikę <3 ;3
 
 	/*if(!strcmp(PlayerName(playerid),"MangoPL",false)))
 	{

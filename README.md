@@ -35,7 +35,7 @@ Jeżeli pominałeś krok z panelem, wróć do niego... Potrzebne Ci będą tabel
 1. Wrzuć do folderu z plikami serwerowymi folder plugins
 1a Skonfiguruj server.cfg (gamemode ustaw na diamond)
 1b W dolonym miejscu (server.cfg) dopisz linijkę plugins oraz...
-Jeżeli masz system operacyjny Linux - plugins sscanf.so mysql.so streamer.so
+Jeżeli masz system operacyjny Linux - plugins sscanf.so mysql.so streamer.so (dodaj dodatkowo plik libmysql do glownego katalogu!!!!)
 Jeżeli masz system operacyjny Windows - plugins sscanf mysql 
 Jeżeli masz inny system operacyjny - zgaś monitor, schowaj się pod biurko i policz do ~
 2. Konfigurujemy w gamemode polaczenie (#define HOST itd)

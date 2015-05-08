@@ -31,14 +31,15 @@ ZALECAM ZACZĄĆ OD PODPIĘCIA PANELU
 4. Skonfiguruj go do bazy danych. (hasło ip itd)
 
 >> Włączenie serwera
-(Jeżeli pominałeś krok z panelem, wróć do niego... Potrzebne Ci będą tabele z bazy danych)
+Jeżeli pominałeś krok z panelem, wróć do niego... Potrzebne Ci będą tabele z bazy danych
 1. Wrzuć do folderu z plikami serwerowymi folder plugins
 1a Skonfiguruj server.cfg (gamemode ustaw na diamond)
 1b W dolonym miejscu (server.cfg) dopisz linijkę plugins oraz...
 Jeżeli masz system operacyjny Linux - plugins sscanf.so mysql.so streamer.so
 Jeżeli masz system operacyjny Windows - plugins sscanf mysql 
 Jeżeli masz inny system operacyjny - zgaś monitor, schowaj się pod biurko i policz do ~
-2. Wchodzimy na serwer, rejestrujemy się i możemy zacząć grać :)
+2. Konfigurujemy w gamemode polaczenie (#define HOST itd)
+3. Wchodzimy na serwer, rejestrujemy się i możemy zacząć grać :)
 
 >> Nadawanie uprawnień H@
 1. Wejdź do bazy danych (phpmyadmin)

@@ -1,15 +1,13 @@
+
+
 #include <a_samp>
 // Autor KapiziaK, wszelkie prawa zastrzezone!
 // Chronione prawami autorskimi!
 // Zegnaj moja desko ;c
 // ZAKAZ ZMIANY PONIZEJ
-// Copyright (c) 2014-2015 KapiziaK - airserwer24.pl
-// :) :D
+// Copyright (c) 2014-2015 KapiziaK
+// :)
 // Bądź człowiekiem zachowaj autora!
-// Gamemode moze zawierać jakieś śmieci z neta, z powodu edycji
-// pana Cruzzera na potrzeby pwTRUCK,
-// skopiował tam kiklka skryptów, lecz ja (KapiziaK)
-// robiłem w 99% autorskie skrypty :)
 // ________________________________
 //
 //				Oryginalny gamemode diamondtruck
@@ -22,13 +20,10 @@
 #include <md5>
 #include <mysql>
 #include <sscanf2>
-
-
-#include <nfunk> // NFUNK BY NICKK888 > Ni chciało mi się robić na nowo :c Zaczerpnąłem za jego pozwoleniem :)
-
-#include <opt> // optymializacja
-
-
+#include <a_http>
+#include <nfunk>
+#include <dini>
+#include <foreach>
 
 #include <streamer>
 
@@ -230,7 +225,22 @@ native gpci (playerid, serial [], len); // this is the native.
 
 new bool:antycheatveh = false;
 
-
+new bramataxi;
+new bramamc;
+new bramarico1;
+new bramarico2;
+new bramaet;
+new bramapd;
+new bramapoli;
+new bramapoli2;
+new bramavip;
+new bramkadolv;
+new bramkadols;
+new osiedle;
+new bazaadm;
+new bramate;
+new bramacruzz;
+new bramapks;
 
 enum(<<= 1) {
 	NULL = 0,
@@ -1425,7 +1435,7 @@ CreateDynamicObject(980,1447.4000000,664.5000000,12.4000000,0.0000000,0.0000000,
 		bramalotnisko1 = CreateObject(971,87.0000000,-199.0000000,6.4000000,0.0000000,0.0000000,1.5000000);
 		bramalotnisko2 = CreateObject(980,-45.2998000,-138.4003900,5.4000000,0.0000000,0.0000000,261.9960000);
 
-		Szamanero(); // optymalziacja >> serwer szybszy :)
+
 		// --
 		//#undef GGKAPIZIAK
 		//#define GGKAPIZIAK "39831273"
@@ -1623,8 +1633,6 @@ CreateDynamicObject(980,1447.4000000,664.5000000,12.4000000,0.0000000,0.0000000,
 		SendRconCommand(query);
 
 		//format(query,sizeof query,"%d:%d",godz,minu);
-
-		
 
 		SetWorldTime((godz));
 
@@ -6075,7 +6083,7 @@ CreateDynamicObject(980,1447.4000000,664.5000000,12.4000000,0.0000000,0.0000000,
 	{
 		SetPVarInt(playerid,"zalogowany",1);
 		new query[500];
-		format(query,sizeof query,"SELECT `id` ,`score`, `money`, `team`, `vip`, `leveladmin`, `legal`, `nolegal`,`skin`,`poziom`,`ADR`,`PrawkoA`,`PrawkoB`,`PrawkoC`,`PrawkoD` FROM `users` WHERE `nick` = '%s'",PlayerName(playerid));
+		format(query,sizeof query,"SELECT `id` ,`score`, `money`, `team`, `vip`, `leveladmin`, `legal`, `nolegal`,`skin`,`poziom`,`ADR`,`PrawkoA`,`PrawkoB`,`PrawkoC`,`PrawkoD`,`licencjapilota` FROM `users` WHERE `nick` = '%s'",PlayerName(playerid));
 		mysql_query(query);
 		mysql_store_result();
 		mysql_fetch_row(query,"|");
@@ -6083,7 +6091,7 @@ CreateDynamicObject(980,1447.4000000,664.5000000,12.4000000,0.0000000,0.0000000,
 		// WZÃ??Ã¢â‚¬Å“R: `id`, `score`, `money`, `ip`, `host`, `team`, `vip`, `admin`
 		new lastlogin[150];
 		//sscanf(query,"p<|>ddds[16]s[30]ddddd",PlayerInfo[playerid][UID],PlayerInfo[playerid][Score],PlayerInfo[playerid][Money],PlayerInfo[playerid][IP],PlayerInfo[playerid][Host],PlayerInfo[playerid][Team],PlayerInfo[playerid][LevelAdmin],PlayerInfo[playerid][VIP],PlayerInfo[playerid][Legalne],PlayerInfo[playerid][Nielegalne]);
-		sscanf(query,"p<|>dddddddddddddddd",PlayerInfo[playerid][UID],PlayerInfo[playerid][Score],PlayerInfo[playerid][Money],PlayerInfo[playerid][Team],PlayerInfo[playerid][VIP],PlayerInfo[playerid][LevelAdmin],PlayerInfo[playerid][Legalne],PlayerInfo[playerid][Nielegalne],PlayerInfo[playerid][Skin],PlayerInfo[playerid][Poziom],PlayerInfo[playerid][ADR],PlayerInfo[playerid][PrawkoA],PlayerInfo[playerid][PrawkoB],PlayerInfo[playerid][PrawkoC],PlayerInfo[playerid][PrawkoD]);
+		sscanf(query,"p<|>dddddddddddddddd",PlayerInfo[playerid][UID],PlayerInfo[playerid][Score],PlayerInfo[playerid][Money],PlayerInfo[playerid][Team],PlayerInfo[playerid][VIP],PlayerInfo[playerid][LevelAdmin],PlayerInfo[playerid][Legalne],PlayerInfo[playerid][Nielegalne],PlayerInfo[playerid][Skin],PlayerInfo[playerid][Poziom],PlayerInfo[playerid][ADR],PlayerInfo[playerid][PrawkoA],PlayerInfo[playerid][PrawkoB],PlayerInfo[playerid][PrawkoC],PlayerInfo[playerid][PrawkoD],PlayerInfo[playerid][licencjapilota]);
 		printf("%d %d %d %d %d %d %d %d %d skin: %d Poziom %d ADR %d",PlayerInfo[playerid][UID],PlayerInfo[playerid][Score],PlayerInfo[playerid][Money],PlayerInfo[playerid][Team],PlayerInfo[playerid][VIP],PlayerInfo[playerid][LevelAdmin],lastlogin,PlayerInfo[playerid][Legalne],PlayerInfo[playerid][Nielegalne],PlayerInfo[playerid][Skin],PlayerInfo[playerid][Poziom],PlayerInfo[playerid][ADR]);
 		GiveMoneyEx(playerid,PlayerInfo[playerid][Money]);
 		GiveScoreEx(playerid,PlayerInfo[playerid][Score]);
@@ -8428,7 +8436,7 @@ CreateDynamicObject(980,1447.4000000,664.5000000,12.4000000,0.0000000,0.0000000,
 
 	*/
 
-	CMD:autor(playerid,params[]) // pan Cruzzer niestety usunął i to jest takim drugim powodem dlaczego wstawiam go na pawno.pl
+	CMD:autor(playerid,params[])
 	{
 		SendClientMessage(playerid,Zielony,"# Autor gamemode KapiziaK -- GG:39831273! Wszelkie prawa zmiany tej wiadomosci zastrzezone!");
 
@@ -12593,7 +12601,7 @@ CMD:dodaj_zlecenie(playerid,params[])
 
 	new t,cid,kct;
 	if(sscanf(params,"ddd",t,cid,kct))
-	return 0; // Kocham Weronikę <3 ;3
+	return 0;
 
 	/*if(!strcmp(PlayerName(playerid),"MangoPL",false)))
 	{

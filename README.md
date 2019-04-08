@@ -1,12 +1,5 @@
 
-[Tablice tak wiem, za w ch*j duże (sam do siebie) TY CHORY POJ*BIE!]
-
 Witam
-
-Mam przyjemnośc przedstawić Panśtwu projekt Diamond Truck, który został edytowany wiele razy.
-Na początku chciałbym podziękować dla:
-- Sulfur'a > Design panelu
-- oraz w części dla Cruzzer'a > Wklejka kilku skryptów z internetu (;_;)
 
 Jest to edycja pwTRUCK [*], wiadomości zostały nieco zmienione wizualnie przez Cruzzer'a.
 Wachałem się czy wstawiać 12 tysięcy linijek kodu do internetu, lecz zdecydowałem, że tak będzie najlepiej.
